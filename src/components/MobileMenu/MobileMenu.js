@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
 
-import { COLORS, QUERIES } from "../../constants";
+import { QUERIES } from "../../constants";
 
 import UnstyledButton from "../UnstyledButton";
 import Icon from "../Icon";
@@ -61,7 +61,7 @@ const Wrapper = styled(DialogContent)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${COLORS.white};
+  background-color: var(--color-white);
 
   & > *:first-child {
     position: absolute;
@@ -79,11 +79,11 @@ const Nav = styled.nav`
 `;
 
 const NavLink = styled.a`
-  color: ${COLORS.gray[900]};
+  color: var(--color-gray-900);
   text-decoration: none;
 
   &.active {
-    color: ${COLORS.secondary};
+    color: var(--color-secondary);
   }
 
   &:not(:last-child) {
@@ -99,7 +99,7 @@ const Footer = styled.footer`
 
   a {
     display: block;
-    color: ${COLORS.gray[700]};
+    color: var(--color-gray-700);
     text-decoration: none;
 
     &:not(:last-child) {
