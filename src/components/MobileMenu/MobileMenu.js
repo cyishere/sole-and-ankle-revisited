@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import styled from 'styled-components/macro';
-import { DialogOverlay, DialogContent } from '@reach/dialog';
+import React from "react";
+import styled from "styled-components/macro";
+import { DialogOverlay, DialogContent } from "@reach/dialog";
 
-import { QUERIES } from '../../constants';
+import { COLORS, QUERIES } from "../../constants";
 
-import UnstyledButton from '../UnstyledButton';
-import Icon from '../Icon';
-import VisuallyHidden from '../VisuallyHidden';
+import UnstyledButton from "../UnstyledButton";
+import Icon from "../Icon";
+import VisuallyHidden from "../VisuallyHidden";
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   if (!isOpen) {
@@ -15,23 +15,97 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   }
 
   return (
-    <div>
-      <button onClick={onDismiss}>Dismiss menu</button>
-      <nav>
-        <a href="/sale">Sale</a>
-        <a href="/new">New&nbsp;Releases</a>
-        <a href="/men">Men</a>
-        <a href="/women">Women</a>
-        <a href="/kids">Kids</a>
-        <a href="/collections">Collections</a>
-      </nav>
-      <footer>
-        <a href="/terms">Terms and Conditions</a>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/contact">Contact Us</a>
-      </footer>
-    </div>
+    <Overlay>
+      <Wrapper>
+        <UnstyledButton onClick={onDismiss}>
+          <Icon id="close" strokeWidth={1} />
+        </UnstyledButton>
+        <Nav>
+          <NavLink className="active" href="/sale">
+            Sale
+          </NavLink>
+          <NavLink href="/new">New&nbsp;Releases</NavLink>
+          <NavLink href="/men">Men</NavLink>
+          <NavLink href="/women">Women</NavLink>
+          <NavLink href="/kids">Kids</NavLink>
+          <NavLink href="/collections">Collections</NavLink>
+        </Nav>
+        <Footer>
+          <a href="/terms">Terms and Conditions</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/contact">Contact Us</a>
+        </Footer>
+      </Wrapper>
+    </Overlay>
   );
 };
+
+const Overlay = styled(DialogOverlay)`
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background-color: hsla(220, 5%, 40%, 0.8);
+  display: none;
+
+  @media ${QUERIES.tabletAndDown} {
+    display: block;
+  }
+`;
+
+const Wrapper = styled(DialogContent)`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: ${COLORS.white};
+
+  & > *:first-child {
+    position: absolute;
+    top: 2rem;
+    right: 1.375rem;
+  }
+`;
+
+const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+`;
+
+const NavLink = styled.a`
+  color: ${COLORS.gray[900]};
+  text-decoration: none;
+
+  &.active {
+    color: ${COLORS.secondary};
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+`;
+
+const Footer = styled.footer`
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  font-size: 0.875rem;
+
+  a {
+    display: block;
+    color: ${COLORS.gray[700]};
+    text-decoration: none;
+
+    &:not(:last-child) {
+      margin-bottom: 0.25rem;
+    }
+  }
+`;
 
 export default MobileMenu;
