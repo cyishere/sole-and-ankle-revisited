@@ -10,12 +10,8 @@ import Icon from "../Icon";
 import VisuallyHidden from "../VisuallyHidden";
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
-  if (!isOpen) {
-    return null;
-  }
-
   return (
-    <Overlay>
+    <Overlay isOpen={isOpen} onDismiss={onDismiss}>
       <Wrapper>
         <UnstyledButton onClick={onDismiss}>
           <Icon id="close" strokeWidth={1} />
@@ -44,7 +40,6 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
 const Overlay = styled(DialogOverlay)`
   position: fixed;
   inset: 0;
-  z-index: 10;
   background-color: hsla(220, 5%, 40%, 0.8);
   display: none;
 
