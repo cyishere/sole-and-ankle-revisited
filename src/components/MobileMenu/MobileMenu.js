@@ -19,6 +19,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
       <Wrapper>
         <UnstyledButton onClick={onDismiss}>
           <Icon id="close" strokeWidth={1} />
+          <VisuallyHidden>Close</VisuallyHidden>
         </UnstyledButton>
         <Nav>
           <NavLink className="active" href="/sale">

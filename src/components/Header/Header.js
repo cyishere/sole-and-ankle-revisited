@@ -6,6 +6,7 @@ import Logo from "../Logo";
 import SuperHeader from "../SuperHeader";
 import MobileMenu from "../MobileMenu";
 import UnstyledButton from "../UnstyledButton";
+import VisuallyHidden from "../VisuallyHidden";
 import Icon from "../Icon";
 
 const Header = () => {
@@ -34,12 +35,15 @@ const Header = () => {
         <Side>
           <UnstyledButton>
             <Icon id="shopping-bag" strokeWidth={2} />
+            <VisuallyHidden>Cart</VisuallyHidden>
           </UnstyledButton>
           <UnstyledButton>
             <Icon id="search" strokeWidth={2} />
+            <VisuallyHidden>Search</VisuallyHidden>
           </UnstyledButton>
           <UnstyledButton onClick={() => setShowMobileMenu(true)}>
             <Icon id="menu" strokeWidth={2} />
+            <VisuallyHidden>Menu</VisuallyHidden>
           </UnstyledButton>
         </Side>
       </MainHeader>
